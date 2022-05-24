@@ -1,0 +1,14 @@
+
+
+GET http://localhost/mfee26-php/practice/a20220518-08-get.php
+
+###
+
+GET http://localhost/mfee26-php/practice/a20220518-08-get.php?account=shin&password=1234
+
+###
+
+POST http://localhost/mfee26-php/practice/0518-09-post.php
+Content-Type: application/x-www-form-urlencoded
+
+account=king&password=123456
