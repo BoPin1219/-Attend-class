@@ -20,7 +20,7 @@ $sql = "INSERT INTO `address_book`(
         ?, ?, NOW()
     )";
 
-$stmt = $pdo->prepare($sql);
+$stmt = $pdo->prepare($sql);  //修改的時候會用prepare跟execute
 $stmt->execute([
     "李小明's pen",
     'ming@test.com',
