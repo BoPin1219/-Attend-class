@@ -21,13 +21,13 @@ if (!isset($pageName)) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link <?= $pageName == 'index' ? 'active' : '' ?>" href="index_.php">Home</a>
+                        <a class="nav-link <?= $pageName == 'index' ? 'active' : '' ?>" href="index_.php">首頁</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $pageName == 'ab-list' ? 'active' : '' ?>" href="ab-list.php">ab-list</a>
+                        <a class="nav-link <?= $pageName == 'ab-list' ? 'active' : '' ?>" href="ab-list.php">基本資料</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $pageName == 'ab-add' ? 'active' : '' ?>" href="ab-add.php">新增通訊錄</a>
+                        <a class="nav-link <?= $pageName == 'ab-add' ? 'active' : '' ?>" href="ab-add.php">新增基本資料</a>
                     </li>
                 </ul>
 
