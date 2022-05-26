@@ -5,6 +5,15 @@ $title = '新增通訊錄資料 - 小新的網站';
 ?>
 <?php include __DIR__ . '/parts/html-head.php' ?>
 <?php include __DIR__ . '/parts/navbar.php' ?>
+<style>
+    .form-control.red {
+        border: 1px solid red;
+    }
+
+    .form-text.red {
+        color: red;
+    }
+</style>
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -13,27 +22,27 @@ $title = '新增通訊錄資料 - 小新的網站';
                     <h5 class="card-title">新增基本資料</h5>
                     <form name="form1" onsubmit="sendData();return false;" novalidate>
                         <div class="mb-3">
-                            <label for="name" class="form-label">* 姓名</label>
+                            <label for="name" class="form-label">*姓名name</label>
                             <input type="text" class="form-control" id="name" name="name" required>
-                            <div class="form-text"></div>
+                            <div class="form-text red"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">信箱</label>
+                            <label for="email" class="form-label">信箱email</label>
                             <input type="email" class="form-control" id="email" name="email">
-                            <div class="form-text"></div>
+                            <div class="form-text red"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="mobile" class="form-label">電話</label>
+                            <label for="mobile" class="form-label">電話mobile</label>
                             <input type="text" class="form-control" id="mobile" name="mobile" pattern="09\d{8}">
-                            <div class="form-text"></div>
+                            <div class="form-text red"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="birthday" class="form-label">生日</label>
+                            <label for="birthday" class="form-label">出生日期birthday</label>
                             <input type="date" class="form-control" id="birthday" name="birthday">
                             <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="address" class="form-label">地址</label>
+                            <label for="address" class="form-label">地址address</label>
                             <textarea class="form-control" name="address" id="address" cols="30" rows="3"></textarea>
                             <div class="form-text"></div>
                         </div>
@@ -56,22 +65,43 @@ $title = '新增通訊錄資料 - 小新的網站';
     const email_f = document.form1.email;
     const mobile_f = document.form1.mobile;
 
+    const fields = [name_f, email_f, mobile_f];
+    const fieldTexts = [];
+    for (let f of fields) {
+        fieldTexts.push(f.nextElementSibling);
+    }
+
 
 
     async function sendData() {
+        // 讓欄位的外觀回復原來的狀態
+        for (let i in fields) {
+            fields[i].classList.remove('red');
+            fieldTexts[i].innerText = '';
+        }
+
         // TODO: 欄位檢查, 前端的檢查
         let isPass = true; // 預設是通過檢查的
 
         if (name_f.value.length < 2) {
-            alert('姓名至少兩個字');
+            // alert('姓名至少兩個字');
+            // name_f.classList.add('red');
+            // name_f.nextElementSibling.classList.add('red');
+            // name_f.closest('.mb-3').querySelector('.form-text').classList.add('red');
+            fields[0].classList.add('red');
+            fieldTexts[0].innerText = '姓名至少兩個字';
             isPass = false;
         }
         if (email_f.value && !email_re.test(email_f.value)) {
-            alert('email 格式錯誤');
+            // alert('email 格式錯誤');
+            fields[1].classList.add('red');
+            fieldTexts[1].innerText = 'email 格式錯誤';
             isPass = false;
         }
         if (mobile_f.value && !mobile_re.test(mobile_f.value)) {
-            alert('手機號碼格式錯誤');
+            // alert('手機號碼格式錯誤');
+            fields[2].classList.add('red');
+            fieldTexts[2].innerText = '手機號碼格式錯誤';
             isPass = false;
         }
 
